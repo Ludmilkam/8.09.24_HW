@@ -7,21 +7,17 @@
 </head>
 <body>
     <div class="posts">
-        <h2>
-            <!-- <ul> -->
-                <% posts.forEach((name) => {%>
-                    <%= name %>
-                <%})%>
-            <!-- </ul> -->
-        </h2>
-        <p>
-            <!-- <ul> -->
-                <% posts.forEach((author) => {%>
-                    <%= author %>
-                <%})%>
-            <!-- </ul> -->
-        </p>
-            
+    <h1>products list: </h1>
+    <ul>
+        <% posts.forEach((post) => {%>
+            <li>
+                <div>   
+                    <h1><%= post.name %></h1>
+                    <p><%= post.author %></p>
+                </div>
+            </li>
+           
+        <%})%>
     </div>
 </body>
 </html>

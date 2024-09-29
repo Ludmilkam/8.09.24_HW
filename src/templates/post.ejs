@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/post.css">
+    <title>Document</title>
+</head>
+<body>
+    <% if (post){ %>
+        <div class="post">
+            <h1>
+                Name: <%= post.name %>
+            </h1>
+            <p>
+                Description: <%= post.description %>
+            </p>
+            <p>
+                Time publicated: <%= post.time_publicated %>
+            </p>
+            <p>
+                Author: <%= post.author %>
+            </p>
+        </div>
+    <% } else { %>
+        <h1>Сторінки не icнує</h1>
+    <% } %>
+    <a href="/posts/">Прости</a>
+</body>
+</html>
