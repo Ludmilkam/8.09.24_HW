@@ -3,11 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/main.css">
+    <script defer src="/static/post.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div class="posts">
-    <h1>products list: </h1>
+    <h1>posts list: </h1>
     <ul>
         <% posts.forEach((post) => {%>
             <li>
@@ -16,8 +17,8 @@
                     <p><%= post.author %></p>
                 </div>
             </li>
-           
         <%})%>
+        <button id = "createPostButton">create post</button>
     </div>
 </body>
 </html>
