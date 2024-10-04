@@ -45,7 +45,7 @@ app.get("/posts",(req,res) => {
     const context = {
         posts: posts.slice(0, req.query.max)
     }
-    res.render("main", context)
+    res.render("posts", context)
 })
 app.get("/post/:id",(req,res) => {
     const id = req.params.id
