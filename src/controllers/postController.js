@@ -1,9 +1,5 @@
 const postService = require('../services/postService')
 
-function getDate (req,res) {
-    console.log(date())
-    res.send(date())
-}
 
 function getPostById (req, res) {
     const id = req.params.id
@@ -14,7 +10,7 @@ function getPostById (req, res) {
 function getAllPosts (req, res) {
     console.log(req.query)
     const context = postService.getAllPosts(req.query.max)
-    res.render('all', context)
+    res.render('posts', context)
 }
 
 function createPost(req,res) {
@@ -24,7 +20,6 @@ function createPost(req,res) {
     res.send(msg)
 }
 module.exports = {
-    getDate: getDate,
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
     createPost: createPost 

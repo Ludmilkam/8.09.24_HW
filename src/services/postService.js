@@ -23,9 +23,7 @@ const posts = [
     }
 ]
 
-function getDate () {
-    return "date"
-}
+
 
 function getPostById (id) {
     console.log(id)
@@ -47,7 +45,7 @@ function createPost(post) {;
 }
 
 module.exports = {
-    getDate: getDate,
+
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
     createPost: createPost 
