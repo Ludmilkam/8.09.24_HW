@@ -1,3 +1,8 @@
+/*
+у контроллері зберігаєтються данні, які треба відправити
+
+*/
+
 const postService = require('../services/postService')
 
 

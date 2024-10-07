@@ -1,3 +1,10 @@
+/*
+у роутері прописуємо шляхи за якими ми будемо знаходити сторінки
+
+*/
+
+
+
 const express = require("express")
 const postControllers = require("../controllers/postController")
 const router = express.Router()
