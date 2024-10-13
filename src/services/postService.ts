@@ -15,7 +15,14 @@
 */
 
 
-const posts = [
+const posts :{
+    id: string,
+    name: string,
+    description:string,
+    time_publicated:string,
+    author:string
+
+}[] = [
     {
     id:"1",
     name: 'post1',
@@ -34,28 +41,37 @@ const posts = [
 
 
 
-function getPostById (id) {
+function getPostById (id:number) {
     console.log(id)
     const context = {
         post:posts[id-1],
     }
     return context
 }
-function getAllPosts (max) {
+function getAllPosts (max:number) {
     const context = {
         posts:posts.slice(0, max)
     }
     return context
 }
 
-function createPost(post) {;
+function createPost(post:{
+    id: string,
+    name: string,
+    description:string,
+    time_publicated:string,
+    author:string
+        
+}) {
     posts.push(post)
     return "Hello woda"
 }
 
-module.exports = {
-
+const postService = {
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
     createPost: createPost 
 }
+
+export default postService
+// export{getPostById, getAllPosts, createPost}

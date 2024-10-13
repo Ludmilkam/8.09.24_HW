@@ -1,8 +1,13 @@
-const express = require('express')
-const date = require('./script.js')
-const path = require('path')
-const app = express()
+// const express = require('express')
 
+// const path = require('path')
+
+
+import express, {Express, Request, Response} from 'express'
+import path from 'path'
+
+const app : Express = express()
+const date = require('./static/script.js')
 const postRouter = require("./routers/postRouter")
 
 const HOST = '127.0.0.1' 
@@ -19,11 +24,11 @@ app.use(express.json())
 app.use("/post/", postRouter)
 
 
-app.get("/",(req,res) => {
+app.get("/",(req : Request,res: Response) => {
     res.render('index')
 })
 
-app.get("/date",(req,res) => {
+app.get("/date",(req : Request,res: Response) => {
     console.log(date())
     res.send(date())
 })

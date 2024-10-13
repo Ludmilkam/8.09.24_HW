@@ -2,30 +2,33 @@
 у контроллері зберігаєтються данні, які треба відправити
 
 */
+import express,{ Express, Request,Response } from "express"
+// const postService = require('../services/postService')
+import postService from "../services/postService"
 
-const postService = require('../services/postService')
 
-
-function getPostById (req, res) {
-    const id = req.params.id
+function getPostById (req: Request, res: Response) {
+    const id  = req.params.id
     console.log(id)
     const context = postService.getPostById(id)
     res.render('post', context)
 }
-function getAllPosts (req, res) {
+function getAllPosts (req: Request, res: Response) {
     console.log(req.query)
     const context = postService.getAllPosts(req.query.max)
     res.render('posts', context)
 }
 
-function createPost(req,res) {
+function createPost(req: Request, res: Response) {
     console.log(req.body);
     const post = req.body
     const msg = postService.createPost(post)
     res.send(msg)
 }
-module.exports = {
+const postControllers = {
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
     createPost: createPost 
 }
+
+export default postControllers
