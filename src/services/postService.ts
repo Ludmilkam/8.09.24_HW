@@ -16,7 +16,7 @@
 
 
 const posts :{
-    id: string,
+    id: number,
     name: string,
     description:string,
     time_publicated:string,
@@ -24,14 +24,14 @@ const posts :{
 
 }[] = [
     {
-    id:"1",
+    id:1,
     name: 'post1',
     description:" просто пост",
     time_publicated:"сегодня",
     author: 'Author1 '
     },
     {
-    id:"2",
+    id:2,
     name: 'post2',
     description:" it`s my birthday",
     time_publicated:"29.09",
@@ -56,12 +56,11 @@ function getAllPosts (max:number) {
 }
 
 function createPost(post:{
-    id: string,
+    id: number,
     name: string,
     description:string,
-    time_publicated:string,
-    author:string
-        
+    time_publicated: string,
+    author: string 
 }) {
     posts.push(post)
     return "Hello woda"

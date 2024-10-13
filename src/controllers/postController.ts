@@ -8,14 +8,15 @@ import postService from "../services/postService"
 
 
 function getPostById (req: Request, res: Response) {
-    const id  = req.params.id
+    const id = +req.params.id 
     console.log(id)
     const context = postService.getPostById(id)
     res.render('post', context)
 }
 function getAllPosts (req: Request, res: Response) {
     console.log(req.query)
-    const context = postService.getAllPosts(req.query.max)
+    // сделать проверку на undefined
+    const context = postService.getAllPosts(+req.query.max)
     res.render('posts', context)
 }
 
