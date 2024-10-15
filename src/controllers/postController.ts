@@ -14,10 +14,13 @@ function getPostById (req: Request, res: Response) {
     res.render('post', context)
 }
 function getAllPosts (req: Request, res: Response) {
-    console.log(req.query)
+    // console.log(req.query)
     // сделать проверку на undefined
-    const max = req.query.max === undefined ? 1 : +req.query.max
-    const context = postService.getAllPosts(max)
+    // const max = req.query.max === undefined ? 1 : +req.query.max
+    // const context = postService.getAllPosts(max)
+    // console.log(req.query.max)
+    const max = req.query.max
+    const context = postService.getAllPosts(req.query.max ? +req.query.max : undefined)
     // const context = postService.getAllPosts(+req.query.max)
     res.render('posts', context)
 }

@@ -14,9 +14,8 @@ import postControllers from '../controllers/postController'
 const router = Router()
 
 router.get("/all", postControllers.getAllPosts)
-router.get("/:id", postControllers.getPostById)
 router.post("/create", postControllers.createPost)
-
+router.get("/:id", postControllers.getPostById)
 // module.exports = router
 export default router
 

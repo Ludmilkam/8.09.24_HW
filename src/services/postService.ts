@@ -48,10 +48,15 @@ function getPostById (id:number) {
     }
     return context
 }
-function getAllPosts (max:number) {
+function getAllPosts (max? :number) {
+    if (!max) {
+        max = posts.length
+    }
+    console.log(max)
     const context = {
         posts:posts.slice(0, max)
     }
+    console.log(context)
     return context
 }
 
