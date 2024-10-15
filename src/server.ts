@@ -5,10 +5,11 @@
 
 import express, {Express, Request, Response} from 'express'
 import path from 'path'
-
+import postRouter from "./routers/postRouter"
+// import getCurrentDate from './static/script.js'
 const app : Express = express()
-const date = require('./static/script.js')
-const postRouter = require("./routers/postRouter")
+// const date = require('./static/script.js')
+// const postRouter = require("./routers/postRouter")
 
 const HOST = '127.0.0.1' 
 const PORT = 8000
@@ -28,10 +29,10 @@ app.get("/",(req : Request,res: Response) => {
     res.render('index')
 })
 
-app.get("/date",(req : Request,res: Response) => {
-    console.log(date())
-    res.send(date())
-})
+// app.get("/date",(req : Request,res: Response) => {
+//     console.log(date())
+//     res.send(date())
+// })
 
 app.listen(PORT,HOST,()=>{
     console.log("Server is running on http://127.0.0.1:8000")

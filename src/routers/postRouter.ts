@@ -17,6 +17,7 @@ router.get("/all", postControllers.getAllPosts)
 router.get("/:id", postControllers.getPostById)
 router.post("/create", postControllers.createPost)
 
-module.exports = router
+// module.exports = router
+export default router
 
 

@@ -16,7 +16,9 @@ function getPostById (req: Request, res: Response) {
 function getAllPosts (req: Request, res: Response) {
     console.log(req.query)
     // сделать проверку на undefined
-    const context = postService.getAllPosts(+req.query.max)
+    const max = req.query.max === undefined ? 1 : +req.query.max
+    const context = postService.getAllPosts(max)
+    // const context = postService.getAllPosts(+req.query.max)
     res.render('posts', context)
 }
 
