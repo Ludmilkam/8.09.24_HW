@@ -37,9 +37,14 @@ function getPostById(id) {
     return context;
 }
 function getAllPosts(max) {
+    if (!max) {
+        max = posts.length;
+    }
+    console.log(max);
     const context = {
         posts: posts.slice(0, max)
     };
+    console.log(context);
     return context;
 }
 function createPost(post) {

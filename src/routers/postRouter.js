@@ -13,7 +13,7 @@ const express_1 = require("express");
 const postController_1 = __importDefault(require("../controllers/postController"));
 const router = (0, express_1.Router)();
 router.get("/all", postController_1.default.getAllPosts);
-router.get("/:id", postController_1.default.getPostById);
 router.post("/create", postController_1.default.createPost);
+router.get("/:id", postController_1.default.getPostById);
 // module.exports = router
 exports.default = router;
