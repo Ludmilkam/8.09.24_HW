@@ -203,25 +203,29 @@ async function updateComment() {
 
 
 // доп задание
-// Создать сид, который подключает уже существующие комментарии к уже существующим постам
+// Сид, который подключает уже существующие комментарии к уже существующим постам
 async function connectCommentsFromPosts(){
     const comment = await prisma.comment.updateMany({
+        // получаем коммент с id 1
         where: {
-          postId: 1,  
+          postId: 2,  
         },
+        // меняем пост к которому он привязан на 4
         data: {
-          postId: 2, 
+          postId: 4, 
         },
       });
 }
 
-// Создать сид, который создает пост и к нему сразу же множеством комментариев(использование только одного запроса в бд)
+// Сид, который создает пост и к нему сразу же множеством комментариев(использование только одного запроса в бд)
 async function createPostWithComments(){
     const newPost = await prisma.post.create({
+        // созадем пост по модели пост
         data: {
           name: 'New post',
           description: 'Jakaś treść',
           author:"Ja",
+        // создаем комменты
           comments: {
             create: [
               { header:"jakiś naglówek", body: 'pierwszy koment' },
@@ -230,6 +234,7 @@ async function createPostWithComments(){
             ],
           },
         },
+        // подключаем комменты к постам
         include: {
           comments: true, 
         },
