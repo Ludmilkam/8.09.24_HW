@@ -6,8 +6,8 @@ const prisma = new PrismaClient()
 async function createPost(){
     const post = await prisma.post.create({
         data: {
-            name: 'post4',
-            author: 'Author4'
+            name: 'post3',
+            author: 'Author3'
         }
     })
     console.log(post)
@@ -24,6 +24,26 @@ async function createPosts(){
             {
                 name: 'post5',
                 author: 'Author5'
+            },
+            {
+                name: 'post6',
+                author: 'Author6'
+            },
+            {
+                name: 'post7',
+                author: 'Author7'
+            },
+            {
+                name: 'post8',
+                author: 'Author8'
+            },
+            {
+                name: 'post9',
+                author: 'Author9'
+            },
+            {
+                name: 'post10',
+                author: 'Author10'
             }
         ]
     })
@@ -88,7 +108,7 @@ async function createComment(){
                 header: 'Comment1',
                 body:'Nie wiem co napisać, jakaś treść czegoś',
                 img:"mnie lin`ky to szukać",
-                postId: 1
+                postId: 2
         }
     })
     console.log(comment)
@@ -96,7 +116,7 @@ async function createComment(){
 // Создание множеста комментов
 async function createComments(){
     const comment = await prisma.comment.createMany({
-        data :[
+        data: [
             {
                 header: 'Comment2',
                 body:'Nie wiem co napisać, jakaś treść czegoś',
@@ -108,25 +128,25 @@ async function createComments(){
                 header: 'Comment3',
                 body:'Nie wiem co napisać, jakaś treść czegoś',
                 img:"mnie lin`ky to szukać",
-                postId: 2
+                postId: 3
             },
             {
                 header: 'Comment4',
                 body:'Nie wiem co napisać, jakaś treść czegoś',
                 img:"mnie lin`ky to szukać",
-                postId: 3
+                postId: 4
             },
             {
                 header: 'Comment5',
                 body:'Nie wiem co napisać, jakaś treść czegoś',
                 img:"mnie lin`ky to szukać",
-                postId: 3
+                postId: 4
             },
             {
                 header: 'Comment6',
                 body:'Nie wiem co napisać, jakaś treść czegoś',
                 img:"mnie lin`ky to szukać",
-                postId: 4
+                postId: 5
             }
         ]
     })
@@ -183,12 +203,37 @@ async function updateComment() {
 
 
 // доп задание
-async function getCommentsFromPosts(){
-    
+// Создать сид, который подключает уже существующие комментарии к уже существующим постам
+async function connectCommentsFromPosts(){
+    const comment = await prisma.comment.updateMany({
+        where: {
+          postId: 1,  
+        },
+        data: {
+          postId: 2, 
+        },
+      });
 }
 
+// Создать сид, который создает пост и к нему сразу же множеством комментариев(использование только одного запроса в бд)
 async function createPostWithComments(){
-    
+    const newPost = await prisma.post.create({
+        data: {
+          name: 'New post',
+          description: 'Jakaś treść',
+          author:"Ja",
+          comments: {
+            create: [
+              { header:"jakiś naglówek", body: 'pierwszy koment' },
+              { header:"jakiś naglówek", body: 'drugi koment' },
+              { header:"jakiś naglówek", body: 'trzeci koment' },
+            ],
+          },
+        },
+        include: {
+          comments: true, 
+        },
+      });
 }
 
 async function main() {
@@ -204,6 +249,8 @@ async function main() {
     await findCommentAndPost()
     await deleteComment()
     await updateComment()
+    await connectCommentsFromPosts()
+    await createPostWithComments()
 }
 
 main().then(() => {

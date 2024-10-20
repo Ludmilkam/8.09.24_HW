@@ -5,9 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/server.ts",
-    "prisma:seed": "ts-node ./prisma/seed.ts",
+    "prisma:seed": "ts-node ./src/seed.ts",
     "prisma:format": "prisma format",
     "prisma:migrate": "prisma migrate dev",
+    "prisma:del_migrations": "prisma migrate reset",
     "prisma:generate": "prisma generate"
   },
   "author": "",
