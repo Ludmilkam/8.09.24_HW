@@ -5,7 +5,7 @@
 
 import express, {Express, Request, Response} from 'express'
 import path from 'path'
-import postRouter from "./routers/postRouter"
+import postRouter from "./PostApp/postRouter"
 // import getCurrentDate from './static/script.js'
 const app : Express = express()
 // const date = require('./static/script.js')
@@ -28,6 +28,7 @@ app.use("/post/", postRouter)
 app.get("/",(req : Request,res: Response) => {
     res.render('index')
 })
+
 
 // app.get("/date",(req : Request,res: Response) => {
 //     console.log(date())

@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient
 
 // Создание 1 поста 
 async function createPost(){
@@ -78,18 +78,10 @@ async function findPost() {
 }
 // Получение множества постoв
 // хз
-// async function findPosts() {
-//     const post = await prisma.post.findMany({
-//         where: {
-//             id: 4
-//         })({
-//         where: {
-//             id: 5
-//         }
-//     })
-//     })
-//     console.log(post)
-// }
+async function findPosts() {
+    const posts = await prisma.post.findMany()
+    console.log(posts)
+}
 
 // Удаления поста по id
 async function deletePost() {
@@ -245,7 +237,7 @@ async function main() {
     await createPost()
     await createPosts()
     await findPost()
-    // await findPosts()
+    await findPosts()
     await updatePost()
     await deletePost()
     await createComment()

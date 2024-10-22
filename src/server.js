@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // const path = require('path')
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
-const postRouter_1 = __importDefault(require("./routers/postRouter"));
+const postRouter_1 = __importDefault(require("./PostApp/postRouter"));
 // import getCurrentDate from './static/script.js'
 const app = (0, express_1.default)();
 // const date = require('./static/script.js')

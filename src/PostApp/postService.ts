@@ -13,7 +13,8 @@
 Сервіс відповідає за приняття запроса та відправки відповіді з данними
 
 */
-
+// import postRepository from "./postRepository"
+import postRepository from "./postRepository"
 
 const posts :{
     id: number,
@@ -41,33 +42,33 @@ const posts :{
 
 
 
-function getPostById (id:number) {
+async function getPostById (id:number) {
     console.log(id)
     const context = {
         post:posts[id-1],
     }
     return context
 }
-function getAllPosts (max? :number) {
-    if (!max) {
-        max = posts.length
-    }
+async function getAllPosts (max? :number) {
+    // if (!max) {
+    //     max = posts.length
+    // }
     console.log(max)
     const context = {
-        posts:posts.slice(0, max)
+        posts: await posts.slice(0, max)
     }
     console.log(context)
     return context
 }
 
-function createPost(post:{
+async function createPost(post:{
     id: number,
     name: string,
     description:string,
     time_publicated: string,
     author: string 
 }){
-    posts.push(post)
+    await posts.push(post)
     return "Hello woda"
 }
 
