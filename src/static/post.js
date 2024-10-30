@@ -7,7 +7,7 @@ createButton.addEventListener("click", ()=>{
             {
                 name: 'post3',
                 description:" просто пост",
-                time_publicated:"jutro",
+                time_publicated:26.10,
                 author: 'Author3'
             }),
         headers:{

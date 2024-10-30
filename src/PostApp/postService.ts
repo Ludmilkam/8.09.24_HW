@@ -16,36 +16,11 @@
 // import postRepository from "./postRepository"
 import postRepository from "./postRepository"
 
-const posts :{
-    id: number,
-    name: string,
-    description:string,
-    time_publicated:string,
-    author:string
-
-}[] = [
-    {
-    id:1,
-    name: 'post1',
-    description:" просто пост",
-    time_publicated:"сегодня",
-    author: 'Author1 '
-    },
-    {
-    id:2,
-    name: 'post2',
-    description:" it`s my birthday",
-    time_publicated:"29.09",
-    author: 'Author2'
-    }
-]
-
-
 
 async function getPostById (id:number) {
     console.log(id)
     const context = {
-        post:posts[id-1],
+        post: await postRepository.getPostById(-1),
     }
     return context
 }
@@ -55,20 +30,19 @@ async function getAllPosts (max? :number) {
     // }
     console.log(max)
     const context = {
-        posts: await posts.slice(0, max)
+        posts: await postRepository.getAllPosts()
     }
     console.log(context)
     return context
 }
 
 async function createPost(post:{
-    id: number,
     name: string,
-    description:string,
-    time_publicated: string,
+    description:string | undefined,
+    time_publicated: number | undefined,
     author: string 
 }){
-    await posts.push(post)
+    const createdPost = await postRepository.createPost(post)
     return "Hello woda"
 }
 
