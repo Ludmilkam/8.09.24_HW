@@ -4,7 +4,6 @@ import { sign } from "jsonwebtoken"
 import { SECRET_KEY } from "../config/token"
 
 interface IUserData{
-    role: string,
     username: string,
     email: string,
     password: string

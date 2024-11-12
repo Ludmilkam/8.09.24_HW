@@ -16,7 +16,6 @@ interface IAuthError{
 }
 
 interface IUserData{
-    role: string,
     username: string,
     email: string,
     password: string
