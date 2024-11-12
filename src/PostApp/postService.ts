@@ -20,7 +20,7 @@ import postRepository from "./postRepository"
 async function getPostById (id:number) {
     console.log(id)
     const context = {
-        post: await postRepository.getPostById(-1),
+        post: await postRepository.getPostById(1),
     }
     return context
 }

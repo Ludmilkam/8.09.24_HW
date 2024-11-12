@@ -16,7 +16,7 @@ const app = (0, express_1.default)();
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const HOST = '127.0.0.1';
 const PORT = 8000;
-const SECRET_KEY = "ludanivchemnevinovata";
+// const SECRET_KEY = "ludanivchemnevinovata"
 app.set("view engine", "ejs");
 app.set("views", path_1.default.resolve(__dirname, "./templates"));
 app.use("/static/", express_1.default.static(path_1.default.resolve(__dirname, "./static")));

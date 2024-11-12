@@ -16,7 +16,7 @@ import cookieParser from "cookie-parser"
 
 const HOST = '127.0.0.1' 
 const PORT = 8000
-const SECRET_KEY = "ludanivchemnevinovata"
+// const SECRET_KEY = "ludanivchemnevinovata"
 
 
 app.set("view engine", "ejs")
