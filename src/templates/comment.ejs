@@ -3,32 +3,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/post.css">
-    <script defer src="/static/post.js"></script>
+    <script defer src="/static/comment.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <% if (post){ %>
-        <div class="post">
+    <% if (comment){ %>
+        <div class="comment">
             <h1>
-                Name: <%= post.name %>
+                Header: <%= comment.header %>
             </h1>
             <p>
-                Description: <%= post.description %>
+                Body: <%= comment.body %>
             </p>
             <p>
-                Time publicated: <%= post.time_publicated %>
+                Image: <%= comment.author %>
             </p>
             <p>
-                Author: <%= post.author %>
+                Post: <%= comment.postId %>
             </p>
-            <p>
-                Comments: <%= post.comments %>
-            </p>
-
         </div>
     <% } else { %>
         <h1>Сторінки не icнує</h1>
     <% } %>
-    <a href="/post/all">Пости</a>
+    <a href="/comment/all">Коменти</a>
 </body>
 </html>

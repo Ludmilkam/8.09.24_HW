@@ -9,7 +9,7 @@ interface IUserData{
     password: string
 }
 
-function loginUser(req:Request,res:Response){
+function loginUser(req:Request,res:Response){``
     res.render("login")
 }
 

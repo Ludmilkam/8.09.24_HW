@@ -6,6 +6,7 @@
 import express, {Express, Request, Response} from 'express'
 import path from 'path'
 import postRouter from "./PostApp/postRouter"
+import commentRouter from "./CommentApp/commentRouter"
 import userRouter from './UserApp/userRouter'
 // import getCurrentDate from './static/script.js'
 const app : Express = express()
@@ -28,6 +29,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use("/post/", postRouter)
+app.use("/comment/", commentRouter)
 app.use("/", userRouter)
 
 
