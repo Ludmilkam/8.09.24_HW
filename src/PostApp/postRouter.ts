@@ -2,23 +2,21 @@
 у роутері прописуємо шляхи за якими ми будемо знаходити сторінки
 
 */
-
-
-
-// const express = require("express")
 import express, {Express, Router} from 'express'
-// const postControllers = require("../controllers/postController")
 import postControllers from './postController'
 import { authMiddleware } from "../middlewares/authMiddleware"
+import { checkRole } from '../middlewares/roleMiddelware'
 
 
 const router = Router()
+// он выпендривается и я незнаю почему😕
 // router.use(authMiddleware)
 
 router.get("/all", postControllers.getAllPosts)
-router.post("/create", postControllers.createPost)
+router.post("/create",checkRole("admin") ,postControllers.createPost)
 router.get("/:id", postControllers.getPostById)
-// module.exports = router
+router.get("/delete", checkRole("admin"),postControllers.deletePost)
+
 export default router
 
 

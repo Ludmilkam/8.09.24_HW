@@ -6,7 +6,7 @@ import { Prisma } from "@prisma/client"
 async function getPostById(id: number){
     const post = await client.post.findUnique({
         where: {
-            id: id
+            id: Number(id)
         }
     })
     return post
@@ -44,13 +44,21 @@ async function createPost(data: Prisma.PostCreateInput){
 } 
 
 
-
+async function deletePost(id: number){
+    const post = await client.post.delete({
+        where: {
+            id: id
+        }
+    })
+    return post
+}
 
 
 const postRepository = {
     getPostById, 
     getAllPosts,
-    createPost 
+    createPost,
+    deletePost 
 }
 
 export default postRepository

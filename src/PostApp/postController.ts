@@ -31,10 +31,20 @@ async function createPost(req: Request, res: Response) {
     const msg = postService.createPost(post)
     res.send(msg)
 }
+
+
+async function deletePost(req: Request, res: Response){
+    console.log(req.body);
+    const post = req.body
+    const msg = postService.deletePost(post)
+    res.send(msg)
+}
+
 const postControllers = {
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
-    createPost: createPost 
+    createPost: createPost,
+    deletePost: deletePost 
 }
 
 export default postControllers

@@ -6,10 +6,11 @@ import { SECRET_KEY } from "../config/token"
 interface IUserData{
     username: string,
     email: string,
-    password: string
+    password: string,
+    role: string
 }
 
-function loginUser(req:Request,res:Response){``
+function loginUser(req:Request,res:Response){
     res.render("login")
 }
 

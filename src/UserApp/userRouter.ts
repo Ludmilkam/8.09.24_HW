@@ -1,7 +1,10 @@
 import express ,{Router} from "express" 
 import userController from "./userController"
+import { authMiddleware } from "../middlewares/authMiddleware"
 
 const router:Router = Router()
+
+// router.use(authMiddleware)
 
 router.get("/login", userController.loginUser)
 router.post("/login", userController.authUser)

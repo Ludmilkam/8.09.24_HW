@@ -46,10 +46,22 @@ async function createPost(post:{
     return "Hello woda"
 }
 
+
+async function deletePost(post:{
+    name: string,
+    description:string | undefined,
+    time_publicated: number | undefined,
+    author: string,
+    id: number
+}){
+
+}
+
 const postService = {
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
-    createPost: createPost 
+    createPost: createPost,
+    deletePost: deletePost 
 }
 
 export default postService
