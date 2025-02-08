@@ -4,10 +4,11 @@ registerForm.addEventListener("submit", (event)=> {
         method: "POST",
         body: JSON.stringify(
             {
-                // role: inputRole.value,
+
                 username: inputUsername.value,
                 email:inputEmail.value,
-                password: inputPassword.value
+                password: inputPassword.value,
+                role: inputRole.value,
             }
         ),
         headers:{

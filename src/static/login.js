@@ -5,7 +5,8 @@ loginForm.addEventListener("submit", (event)=> {
         body: JSON.stringify(
             {
                 email: inputEmail.value,
-                password: inputPassword.value
+                password: inputPassword.value,
+                role: inputRole.value,
             }
         ),
         headers:{
