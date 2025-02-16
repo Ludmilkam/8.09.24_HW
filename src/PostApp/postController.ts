@@ -11,7 +11,11 @@ async function getPostById (req: Request, res: Response) {
     const id = +req.params.id 
     console.log(id)
     const context = await postService.getPostById(id)
-    res.render('post', context)
+    if (context.status === "error") {
+		res.render("error", { message: context.message });
+		return;
+	}
+    res.render('post', {post: context.data})
 }
 async function getAllPosts (req: Request, res: Response) {
     // console.log(req.query)
@@ -20,19 +24,27 @@ async function getAllPosts (req: Request, res: Response) {
     // const context = postService.getAllPosts(max)
     // console.log(req.query.max)
     const max = req.query.max
-    const context = await postService.getAllPosts(req.query.max ? +req.query.max : undefined)
+    const context = await postService.getAllPosts()
+    if (context.status === "error") {
+		res.render("error", { message: context.message });
+		return;
+	}
+    // req.query.max ? +req.query.max : undefined
     // const context = postService.getAllPosts(+req.query.max)
-    res.render('posts', context)
+    res.render('posts', {post: context.data})
 }
-
+// ?
 async function createPost(req: Request, res: Response) {
     console.log(req.body);
     const post = req.body
-    const msg = postService.createPost(post)
-    res.send(msg)
+    const result = await postService.createPost(post)
+    res.json({
+        message: result.message,
+        status: result.status
+    })
 }
 
-
+// не розумію нічого
 async function deletePost(req: Request, res: Response){
     console.log(req.body);
     const post = req.body

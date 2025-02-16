@@ -1,64 +1,82 @@
-import { client } from "../client/prismaClient"
-import { Prisma } from "@prisma/client"
+import { client } from "../client/prismaClient";
+import { Prisma } from "@prisma/client";
+import { getErrorMessage } from "../tools/getErrorMessage";
 
-
-
-async function getPostById(id: number){
-    const post = await client.post.findUnique({
-        where: {
-            id: Number(id)
-        }
-    })
-    return post
-}
-
-
-
-async function getAllPosts(max?: number){
+async function getPostById(id: number) {
     try {
-        const posts = await client.post.findMany()
-        return posts
-    }catch (err){
-        if (err instanceof Prisma.PrismaClientKnownRequestError){
-            if (err.code === "P2002"){
-                console.log(err.message)
-                throw err
-            }else if ( err.code === "P2015"){
-                console.log(err.message)
-                throw err
-            }else if ( err.code === "P2019"){
-                console.log(err.message)
-                throw err
-            }
+        const post = await client.post.findUnique({
+            where: {
+                id: Number(id),
+            },
+        });
+        return post;
+    } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError) {
+            const errorMessage = getErrorMessage(err.code);
+            console.log(errorMessage);
+            return errorMessage;
         }
+        console.log(err);
+        return "Unexpected error";
     }
 }
 
-
-
-async function createPost(data: Prisma.PostCreateInput){
-    const posts = await client.post.create({
-        data: data
-    })
-    return posts
-} 
-
-
-async function deletePost(id: number){
-    const post = await client.post.delete({
-        where: {
-            id: id
+async function getAllPosts(max?: number) {
+    try {
+        const posts = await client.post.findMany();
+        return posts;
+    } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError) {
+            const errorMessage = getErrorMessage(err.code);
+            console.log(errorMessage);
+            return errorMessage;
         }
-    })
-    return post
+        console.log(err);
+        return "Unexpected error";
+    }
 }
 
+async function createPost(data: Prisma.PostCreateInput) {
+    try {
+        const posts = await client.post.create({
+            data: data,
+        });
+        return posts;
+    } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError) {
+            const errorMessage = getErrorMessage(err.code);
+            console.log(errorMessage);
+            return errorMessage;
+        }
+        console.log(err);
+        return "Unexpected error";
+    }
+}
+
+async function deletePost(id: number) {
+    try {
+        const post = await client.post.delete({
+            where: {
+                id: id,
+            },
+        });
+        return post;
+    } catch (err) {
+        if (err instanceof Prisma.PrismaClientKnownRequestError) {
+            const errorMessage = getErrorMessage(err.code);
+            console.log(errorMessage);
+            return errorMessage;
+        }
+        console.log(err);
+        return "Unexpected error";
+    }
+}
 
 const postRepository = {
-    getPostById, 
+    getPostById,
     getAllPosts,
     createPost,
-    deletePost 
-}
+    deletePost,
+};
 
-export default postRepository
+export default postRepository;

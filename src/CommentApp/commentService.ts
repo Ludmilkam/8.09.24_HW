@@ -1,35 +1,56 @@
-import commentRepository from "./commentRepository"
+import { IError, IOk, IOkWithData } from "../types/types";
+import commentRepository from "./commentRepository";
+import { Comment, CreateComment } from "./types";
 
-
-async function getCommentById (id:number) {
-    console.log(id)
-    const context = {
-        comment: await commentRepository.getCommentById(id),
+async function getCommentById(
+    id: number
+): Promise<IOkWithData<Comment> | IError> {
+    console.log(id);
+    const res = await commentRepository.getCommentById(id);
+    if (!res) {
+        return {
+            status: "error",
+            message: "Product is not found",
+        };
     }
-    return context
-}
-async function getAllComments (max? :number) {
-    console.log(max)
-    const context = {
-        comments: await commentRepository.getAllComments()
+
+    if (typeof res === "string") {
+        return { status: "error", message: res };
     }
-    console.log(context)
-    return context
+    return {
+        status: "ok",
+        data: res,
+    };
+}
+async function getAllComments(): Promise<IOkWithData<Comment[]> | IError> {
+    // console.log(max)
+    const res = await commentRepository.getAllComments();
+    if (typeof res === "string") {
+        return { status: "error", message: res };
+    }
+    return {
+        status: "ok",
+        data: res,
+    };
 }
 
-async function createComment(comment:{
-    header: string,
-    body: string,
-    img: string | undefined,
-}){
-    const createdComment = await commentRepository.createComment(comment)
-    return "Hello woda"
+async function createComment(comment: CreateComment): Promise<IOk | IError> {
+    const res = await commentRepository.createComment(comment);
+    if (typeof res === "string") {
+        return { status: "error", message: res };
+    }
+
+    return {
+        status: "ok",
+        message: "Successfuly created product",
+    };
+    // return "Hello woda"
 }
 
 const commentService = {
-    getCommentById: getCommentById, 
+    getCommentById: getCommentById,
     getAllComments: getAllComments,
-    createComment: createComment 
-}
+    createComment: createComment,
+};
 
-export default commentService
+export default commentService;

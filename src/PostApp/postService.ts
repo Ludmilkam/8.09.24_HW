@@ -1,4 +1,3 @@
-
 // це не моє
 // В сервисе хранится логика работы которую хендлер просто вызывает и возвращает результат по http
 // Например в сервисе может определяться логика (набор действий) которая произойдет при добавлении поста
@@ -14,55 +13,72 @@
 
 */
 // import postRepository from "./postRepository"
-import postRepository from "./postRepository"
+import { IError, IOk, IOkWithData } from "../types/types";
+import postRepository from "./postRepository";
+import { CreatePost, Post } from "./types";
 
-
-async function getPostById (id:number) {
-    console.log(id)
-    const context = {
-        post: await postRepository.getPostById(id),
+async function getPostById(id: number): Promise<IOkWithData<Post> | IError> {
+    console.log(id);
+    const res = await postRepository.getPostById(id);
+    if (res === null) {
+        return {
+            status: "error",
+            message: "Product is not found",
+        };
     }
-    return context
+
+    if (typeof res === "string") {
+        return { status: "error", message: res };
+    }
+    return {
+        status: "ok",
+        data: res,
+    };
 }
-async function getAllPosts (max? :number) {
+async function getAllPosts(): Promise<IOkWithData<Post[]> | IError> {
     // if (!max) {
     //     max = posts.length
     // }
-    console.log(max)
-    const context = {
-        posts: await postRepository.getAllPosts()
+    // console.log(max);
+    const res = await postRepository.getAllPosts();
+
+    if (res === null) {
+        return {
+            status: "error",
+            message: "Product is not found",
+        };
     }
-    console.log(context)
-    return context
+
+    if (typeof res === "string") {
+        return { status: "error", message: res };
+    }
+    return {
+        status: "ok",
+        data: res,
+    };
 }
 
-async function createPost(post:{
-    name: string,
-    description:string | undefined,
-    time_publicated: number | undefined,
-    author: string 
-}){
-    const createdPost = await postRepository.createPost(post)
-    return "Hello woda"
+async function createPost(post: CreatePost): Promise<IOk | IError> {
+    const res = await postRepository.createPost(post);
+    // return "Hello woda";
+    if (typeof res === "string") {
+        return { status: "error", message: res };
+    }
+
+    return {
+        status: "ok",
+        message: "Successfuly created product",
+    };
 }
 
-
-async function deletePost(post:{
-    name: string,
-    description:string | undefined,
-    time_publicated: number | undefined,
-    author: string,
-    id: number
-}){
-
-}
+async function deletePost(post: CreatePost) {}
 
 const postService = {
-    getPostById: getPostById, 
+    getPostById: getPostById,
     getAllPosts: getAllPosts,
     createPost: createPost,
-    deletePost: deletePost 
-}
+    deletePost: deletePost,
+};
 
-export default postService
+export default postService;
 // export{getPostById, getAllPosts, createPost}
