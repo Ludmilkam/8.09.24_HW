@@ -13,9 +13,10 @@ const router = Router()
 // router.use(authMiddleware)
 
 router.get("/all", postControllers.getAllPosts)
-router.post("/create",checkRole("admin") ,postControllers.createPost)
-router.get("/:id", postControllers.getPostById)
+router.get("/create",checkRole("admin") ,postControllers.createPost)
 router.get("/delete", checkRole("admin"),postControllers.deletePost)
+router.get("/:id", postControllers.getPostById)
+
 
 export default router
 

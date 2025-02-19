@@ -10,14 +10,18 @@
     <div class="comments">
     <h1>comments list: </h1>
     <ul>
-        <% comments.forEach((comment) => {%>
+        <% if (posts.comments){ %>
+        <% comments.forEach((comment) => { %>
             <li>
                 <div>   
                     <h1><%= comment.header %></h1>
                     <p><%= comment.body %></p>
                 </div>
             </li>
-        <%})%>
+        <% }) %>
+        <% } else { %>
+            <h1>Сторінки не icнує</h1>
+        <% } %>
         <button id = "createCommentButton">create comment</button>
     </div>
 </body>

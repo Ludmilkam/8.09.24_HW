@@ -10,7 +10,8 @@
     <div class="posts">
     <h1>posts list: </h1>
     <ul>
-        <% posts.forEach((post) => {%>
+        <% if (posts){ %>
+        <% posts.forEach((post) => { %>
             <li>
                 <div>   
                     <h1><%= post.name %></h1>
@@ -18,7 +19,10 @@
                     <button id="deleteButton">delete</button>
                 </div>
             </li>
-        <%})%>
+        <% }) %>
+        <% } else { %>
+            <h1>Сторінки не icнує</h1>
+        <% } %>
         <button id = "createPostButton">create post</button>
     </div>
 </body>
