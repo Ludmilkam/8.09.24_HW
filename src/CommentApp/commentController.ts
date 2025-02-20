@@ -21,7 +21,7 @@ async function getAllComments (req: Request, res: Response) {
 		res.render("error", { message: context.message });
 		return;
 	}
-    res.render('comments', {comment: context.data})
+    res.render('comments', {comments: context.data})
 }
 
 async function createComment(req: Request, res: Response) {

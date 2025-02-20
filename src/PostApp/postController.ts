@@ -31,7 +31,7 @@ async function getAllPosts (req: Request, res: Response) {
 	}
     // req.query.max ? +req.query.max : undefined
     // const context = postService.getAllPosts(+req.query.max)
-    res.render('posts', {post: context.data})
+    res.render('posts', {posts: context.data})
 }
 // ?
 async function createPost(req: Request, res: Response) {
