@@ -61,6 +61,12 @@ async function getAllPosts(): Promise<IOkWithData<Post[]> | IError> {
 async function createPost(post: CreatePost): Promise<IOk | IError> {
     const res = await postRepository.createPost(post);
     // return "Hello woda";
+    if (!res){
+        return {
+            status: "error",
+            message: "product not created "
+        }
+    }
     if (typeof res === "string") {
         return { status: "error", message: res };
     }

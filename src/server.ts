@@ -9,6 +9,7 @@ const app : Express = express()
 // const date = require('./static/script.js')
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import tagRouterApi from './TagApp/api/tagRouterApi'
 
 
 const HOST = '127.0.0.1' 
@@ -29,6 +30,7 @@ app.use(cors({
 
 
 app.use("/api/post/", postRouterApi)
+app.use("/api/tag/", tagRouterApi)
 app.use("/post/", postRouter)
 app.use("/comment/", commentRouter)
 app.use("/", userRouter)
