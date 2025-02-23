@@ -165,6 +165,12 @@ async function findComment() {
     console.log(comment);
 }
 
+async function findComments() {
+    const posts = await prisma.comment.findMany();
+    console.log(posts);
+}
+
+
 // Поиск коммента по id с выводом информации о посте
 async function findCommentAndPost() {
     const comment = await prisma.comment.findUnique({
@@ -262,11 +268,12 @@ async function main() {
     await findPost();
     await findPosts();
     await updatePost();
-    await createComment();
-    await createComments();
-    await findComment();
-    await findCommentAndPost();
-    await updateComment();
+    // await createComment();
+    // await createComments();
+    // await findComment();
+    // await findComments();
+    // await findCommentAndPost();
+    // await updateComment();
     // await deletePost();
     // await deleteComment();
     await connectCommentsFromPosts();

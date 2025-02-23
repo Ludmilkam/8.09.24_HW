@@ -15,9 +15,9 @@
 // import postRepository from "./postRepository"
 import { IError, IOk, IOkWithData } from "../types/types";
 import postRepository from "./postRepository";
-import { CreatePost, Post } from "./types";
+import { CreatePost, Post, PostWithTag } from "./types";
 
-async function getPostById(id: number): Promise<IOkWithData<Post> | IError> {
+async function getPostById(id: number): Promise<IOkWithData<PostWithTag> | IError> {
     console.log(id);
     const res = await postRepository.getPostById(id);
     if (res === null) {
@@ -35,7 +35,7 @@ async function getPostById(id: number): Promise<IOkWithData<Post> | IError> {
         data: res,
     };
 }
-async function getAllPosts(): Promise<IOkWithData<Post[]> | IError> {
+async function getAllPosts(): Promise<IOkWithData<PostWithTag[]> | IError> {
     // if (!max) {
     //     max = posts.length
     // }

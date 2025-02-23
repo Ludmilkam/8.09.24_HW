@@ -8,6 +8,9 @@ async function getPostById(id: number) {
             where: {
                 id: Number(id),
             },
+            include: {
+                tag: true,
+            },
         });
         return post;
     } catch (err) {
@@ -23,7 +26,11 @@ async function getPostById(id: number) {
 
 async function getAllPosts(max?: number) {
     try {
-        const posts = await client.post.findMany();
+        const posts = await client.post.findMany({
+            include: {
+                tag: true,
+            },
+        });
         return posts;
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
