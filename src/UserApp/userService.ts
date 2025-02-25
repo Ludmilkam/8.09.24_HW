@@ -1,7 +1,7 @@
 import { IError, IOkWithData } from "../types/types"
 import { CreateUser, User } from "./types"
 import userRepository from "./userRepository"
-
+import bcrypt from "bcrypt"
 
 
 async function authLogin(password:string, email: string): Promise<IOkWithData<User> | IError> {
@@ -16,7 +16,14 @@ async function authLogin(password:string, email: string): Promise<IOkWithData<Us
     
     if (typeof user === "string") {
         return { status: "error", message: "something wrong" };
+
     } 
+
+    const isMatch = await bcrypt.compare(data.password, user.password);
+        if (!isMatch) {
+            return res.status(409).json({ error: 'Passwords don`t matching' });
+        }
+    
 
     console.log(user)
     console.log(typeof user)

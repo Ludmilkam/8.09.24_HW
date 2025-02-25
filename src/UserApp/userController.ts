@@ -6,7 +6,6 @@ import { IOk, IOkWithData } from "../types/types"
 import { CreateUser, User } from "./types"
 
 
-
 function loginUser(req:Request,res:Response){
     res.render("login")
 }
@@ -15,6 +14,7 @@ async function authUser(req:Request, res:Response){
     console.log(req.body)
     const data = req.body
     const user = await userService.authLogin(data.password, data.email)
+
     if (user.status == "error") {
         res.send(user.message)
     } else if (user.status == "ok") {
