@@ -3,7 +3,7 @@ import userController from "./userController"
 import { authMiddleware } from "../middlewares/authMiddleware"
 
 const router:Router = Router()
-
+// ему плохо
 // router.use(authMiddleware)
 
 router.get("/login", userController.loginUser)
