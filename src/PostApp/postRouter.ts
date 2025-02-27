@@ -2,6 +2,7 @@
 у роутері прописуємо шляхи за якими ми будемо знаходити сторінки
 
 */
+// не используешь
 import express, {Express, Router} from 'express'
 import postControllers from './postController'
 import { authMiddleware } from "../middlewares/authMiddleware"
@@ -13,7 +14,7 @@ const router = Router()
 // router.use(authMiddleware)
 
 router.get("/all", postControllers.getAllPosts)
-router.get("/create",checkRole("admin") ,postControllers.createPost)
+router.get("/create",authMiddleware , checkRole("admin") ,postControllers.createPost)
 router.get("/delete", checkRole("admin"),postControllers.deletePost)
 router.get("/:id", postControllers.getPostById)
 

@@ -1,3 +1,5 @@
+// role у юзера в модели в принципе нет
+
 import { Request, Response, NextFunction } from "express";
 
 

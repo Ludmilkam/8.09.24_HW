@@ -14,6 +14,7 @@ async function getPostById(id: number) {
         });
         return post;
     } catch (err) {
+        // можно вынсти в types
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
             console.log(errorMessage);

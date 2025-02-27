@@ -1,5 +1,6 @@
 import { sign } from "jsonwebtoken"
 import { IError, IOkWithData } from "../types/types"
+// не используешь
 import { CreateUser, User } from "./types"
 import userRepository from "./userRepository"
 import { hash , compare } from "bcryptjs"
@@ -28,6 +29,7 @@ async function authLogin(password:string, email: string): Promise<IOkWithData<st
         }
     
     const token = sign(String(user.id), SECRET_KEY, { expiresIn: "1d" })
+    // не надо
     console.log(user)
     console.log(typeof user)
     return {status : "ok" , data: token}

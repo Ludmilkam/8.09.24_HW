@@ -15,9 +15,11 @@
 // import postRepository from "./postRepository"
 import { IError, IOk, IOkWithData } from "../types/types";
 import postRepository from "./postRepository";
+// не используешь Post
 import { CreatePost, Post, PostWithTag } from "./types";
 
 async function getPostById(id: number): Promise<IOkWithData<PostWithTag> | IError> {
+    // можно убрать console.log
     console.log(id);
     const res = await postRepository.getPostById(id);
     if (res === null) {

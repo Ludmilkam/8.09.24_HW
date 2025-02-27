@@ -1,5 +1,7 @@
+// не используешь
 import express ,{Router} from "express" 
 import userController from "./userController"
+// не используешь
 import { authMiddleware } from "../middlewares/authMiddleware"
 
 const router:Router = Router()

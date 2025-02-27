@@ -2,6 +2,7 @@ import {Request,Response} from "express"
 import userService from "./userService"
 import { sign } from "jsonwebtoken"
 import { SECRET_KEY } from "../config/token"
+// не используешь
 import { IOk, IOkWithData } from "../types/types"
 import { CreateUser, User } from "./types"
 

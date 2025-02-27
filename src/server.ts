@@ -5,6 +5,7 @@ import postRouterApi from "./PostApp/api/postRouterApi"
 import commentRouter from "./CommentApp/commentRouter"
 import userRouter from './UserApp/userRouter'
 // import getCurrentDate from './static/script.js'
+// создание апп после импортов
 const app : Express = express()
 // const date = require('./static/script.js')
 import cookieParser from "cookie-parser"
