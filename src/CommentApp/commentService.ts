@@ -5,12 +5,11 @@ import { Comment, CreateComment } from "./types";
 async function getCommentById(
     id: number
 ): Promise<IOkWithData<Comment> | IError> {
-    console.log(id);
     const res = await commentRepository.getCommentById(id);
     if (!res) {
         return {
             status: "error",
-            message: "Product is not found",
+            message: "Post is not found",
         };
     }
 
@@ -23,7 +22,6 @@ async function getCommentById(
     };
 }
 async function getAllComments(): Promise<IOkWithData<Comment[]> | IError> {
-    // console.log(max)
     const res = await commentRepository.getAllComments();
     if (typeof res === "string") {
         return { status: "error", message: res };
@@ -42,7 +40,7 @@ async function createComment(comment: CreateComment): Promise<IOk | IError> {
 
     return {
         status: "ok",
-        message: "Successfuly created product",
+        message: "Successfuly created post",
     };
     // return "Hello woda"
 }

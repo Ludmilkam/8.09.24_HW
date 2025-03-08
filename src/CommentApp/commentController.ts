@@ -5,7 +5,6 @@ import commentService from "./commentService"
 
 async function getCommentById (req: Request, res: Response) {
     const id = +req.params.id 
-    console.log(id)
     const context = await commentService.getCommentById(id)
     if (context.status === "error") {
 		res.render("error", { message: context.message });
@@ -25,7 +24,6 @@ async function getAllComments (req: Request, res: Response) {
 }
 
 async function createComment(req: Request, res: Response) {
-    console.log(req.body);
     const comment = req.body
     const result =  await commentService.createComment(comment)
     res.json({

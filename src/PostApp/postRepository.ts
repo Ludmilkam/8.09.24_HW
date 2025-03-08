@@ -16,10 +16,8 @@ async function getPostById(id: number) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }
@@ -35,10 +33,8 @@ async function getAllPosts(max?: number) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }
@@ -52,10 +48,8 @@ async function createPost(data: Prisma.PostCreateInput) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }
@@ -71,10 +65,8 @@ async function deletePost(id: number) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }

@@ -10,20 +10,18 @@
 /*
 у сервісі прописуємо логіку роботи сторінок.
 Сервіс відповідає за приняття запроса та відправки відповіді з данними
-
 */
-// import postRepository from "./postRepository"
+
 import { IError, IOk, IOkWithData } from "../types/types";
 import postRepository from "./postRepository";
-import { CreatePost, Post, PostWithTag } from "./types";
+import { CreatePost, PostWithTag } from "./types";
 
 async function getPostById(id: number): Promise<IOkWithData<PostWithTag> | IError> {
-    console.log(id);
     const res = await postRepository.getPostById(id);
     if (res === null) {
         return {
             status: "error",
-            message: "Product is not found",
+            message: "Post is not found",
         };
     }
 
@@ -36,16 +34,12 @@ async function getPostById(id: number): Promise<IOkWithData<PostWithTag> | IErro
     };
 }
 async function getAllPosts(): Promise<IOkWithData<PostWithTag[]> | IError> {
-    // if (!max) {
-    //     max = posts.length
-    // }
-    // console.log(max);
     const res = await postRepository.getAllPosts();
 
     if (res === null) {
         return {
             status: "error",
-            message: "Product is not found",
+            message: "Post is not found",
         };
     }
 
@@ -60,11 +54,10 @@ async function getAllPosts(): Promise<IOkWithData<PostWithTag[]> | IError> {
 
 async function createPost(post: CreatePost): Promise<IOk | IError> {
     const res = await postRepository.createPost(post);
-    // return "Hello woda";
     if (!res){
         return {
             status: "error",
-            message: "product not created "
+            message: "Post not created "
         }
     }
     if (typeof res === "string") {
@@ -73,7 +66,7 @@ async function createPost(post: CreatePost): Promise<IOk | IError> {
 
     return {
         status: "ok",
-        message: "Successfuly created product",
+        message: "Successfuly created post",
     };
 }
 
@@ -87,4 +80,3 @@ const postService = {
 };
 
 export default postService;
-// export{getPostById, getAllPosts, createPost}

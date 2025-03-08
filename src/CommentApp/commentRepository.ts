@@ -13,10 +13,8 @@ async function getCommentById(id: number) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }
@@ -28,10 +26,8 @@ async function getAllComments(max?: number) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }
@@ -45,10 +41,8 @@ async function createComment(data: Prisma.CommentCreateInput) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }

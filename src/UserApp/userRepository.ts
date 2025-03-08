@@ -1,4 +1,3 @@
-
 import { client } from "../client/prismaClient";
 import { Prisma } from "@prisma/client";
 import { getErrorMessage } from "../tools/getErrorMessage";
@@ -14,10 +13,8 @@ async function findUserByEmail(email: string) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }
@@ -31,10 +28,8 @@ async function createUser(data: Prisma.UserCreateInput) {
     } catch (err) {
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
-            console.log(errorMessage);
             return errorMessage;
         }
-        console.log(err);
         return "Unexpected error";
     }
 }

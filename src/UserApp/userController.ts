@@ -2,8 +2,7 @@ import {Request,Response} from "express"
 import userService from "./userService"
 import { sign } from "jsonwebtoken"
 import { SECRET_KEY } from "../config/token"
-import { IOk, IOkWithData } from "../types/types"
-import { CreateUser, User } from "./types"
+import { CreateUser } from "./types"
 
 
 function loginUser(req:Request,res:Response){
@@ -11,7 +10,6 @@ function loginUser(req:Request,res:Response){
 }
 
 async function authUser(req:Request, res:Response){
-    console.log(req.body)
     const data = req.body
     const user = await userService.authLogin(data.password, data.email)
 

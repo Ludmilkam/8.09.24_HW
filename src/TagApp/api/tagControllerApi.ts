@@ -1,4 +1,4 @@
-import express,{ Express, Request,Response } from "express"
+import { Request,Response } from "express"
 import tagService from "../tagService"
 
 async function getAllTags(req: Request, res: Response){

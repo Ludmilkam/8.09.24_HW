@@ -4,7 +4,6 @@ registerForm.addEventListener("submit", (event)=> {
         method: "POST",
         body: JSON.stringify(
             {
-
                 username: inputUsername.value,
                 email:inputEmail.value,
                 password: inputPassword.value,

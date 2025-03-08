@@ -7,7 +7,6 @@ async function createPost() {
     const post = await prisma.post.create({
         data: { name: "post3", author: "Author3", tagId: 3 },
     });
-    console.log(post);
 }
 // Создание множеста постов
 async function createPosts() {
@@ -50,7 +49,6 @@ async function createPosts() {
             // },
         ],
     });
-    console.log(post);
 }
 
 // Обновление одного поста
@@ -63,7 +61,6 @@ async function updatePost() {
             name: "Updated Post",
         },
     });
-    console.log(post);
 }
 // Получение одного поста с комментариями
 async function findPost() {
@@ -72,16 +69,14 @@ async function findPost() {
             id: 4,
         },
         include: {
-            comments: true
+            comments: true,
         },
     });
-    console.log(post);
 }
 // Получение множества постoв
 // хз
 async function findPosts() {
     const posts = await prisma.post.findMany();
-    console.log(posts);
 }
 
 // Удаления поста по id
@@ -91,7 +86,6 @@ async function deletePost() {
             id: 1,
         },
     });
-    console.log(post);
 }
 
 // Создание 1 коммента
@@ -104,7 +98,6 @@ async function createComment() {
             postId: 2,
         },
     });
-    console.log(comment);
 }
 // Создание множеста комментов
 async function createComments() {
@@ -142,7 +135,6 @@ async function createComments() {
             },
         ],
     });
-    console.log(comment);
 }
 
 // Удаления коммента по id
@@ -152,7 +144,6 @@ async function deleteComment() {
             id: 5,
         },
     });
-    console.log(comment);
 }
 
 // Поиск коммента по id
@@ -162,14 +153,11 @@ async function findComment() {
             id: 4,
         },
     });
-    console.log(comment);
 }
 
 async function findComments() {
     const posts = await prisma.comment.findMany();
-    console.log(posts);
 }
-
 
 // Поиск коммента по id с выводом информации о посте
 async function findCommentAndPost() {
@@ -181,7 +169,6 @@ async function findCommentAndPost() {
             post: true,
         },
     });
-    console.log(comment);
 }
 
 // Обновление коммента
@@ -194,7 +181,6 @@ async function updateComment() {
             header: "Updated Comment",
         },
     });
-    console.log(comment);
 }
 
 // доп задание
@@ -285,6 +271,5 @@ main()
         prisma.$disconnect();
     })
     .catch((err) => {
-        console.log(err);
         prisma.$disconnect();
     });

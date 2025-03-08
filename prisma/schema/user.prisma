@@ -4,6 +4,7 @@ model User {
   email       String    @unique
   password    String
   description String?
+  role        String
   posts       Post[]
   comments    Comment[]
 }

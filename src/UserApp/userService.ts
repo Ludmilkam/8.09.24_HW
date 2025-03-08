@@ -1,6 +1,6 @@
 import { sign } from "jsonwebtoken"
 import { IError, IOkWithData } from "../types/types"
-import { CreateUser, User } from "./types"
+import { CreateUser } from "./types"
 import userRepository from "./userRepository"
 import { hash , compare } from "bcryptjs"
 import { SECRET_KEY } from "../config/token"
@@ -28,18 +28,14 @@ async function authLogin(password:string, email: string): Promise<IOkWithData<st
         }
     
     const token = sign(String(user.id), SECRET_KEY, { expiresIn: "1d" })
-    console.log(user)
-    console.log(typeof user)
     return {status : "ok" , data: token}
 }
 
 async function authRegistration(userData: CreateUser): Promise<IOkWithData<string> | IError> {
     const user = await userRepository.findUserByEmail(userData.email)
-
     if (user){
         return { status:"error", message:"user exists" }
     }
-
 
     const hashedPassword = await hash(userData.password, 10)
     
@@ -58,7 +54,7 @@ async function authRegistration(userData: CreateUser): Promise<IOkWithData<strin
         return{ status:"error", message:"User wasn`t created successfully" }
     }
 
-    const token = sign(String(newUser.id), SECRET_KEY, { expiresIn: "1d" })
+    const token = sign({id:newUser.id}, SECRET_KEY, { expiresIn: "1d" })
     return{ status:"ok" , data: token}
 
 }
