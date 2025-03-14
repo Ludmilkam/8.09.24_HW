@@ -17,9 +17,16 @@ async function registerUser(req: Request, res: Response){
     res.json(result)
 }
 
+async function getUser(req : Request , res : Response){
+    const userId = res.locals.userId
+    const result = await userService.getUserById(userId)
+    res.json(result)
+}
+
 const userControllerApi={
     loginUser,
-    registerUser
+    registerUser,
+    getUser
 }
 
 export default userControllerApi

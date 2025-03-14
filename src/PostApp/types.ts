@@ -8,3 +8,4 @@ export type PostWithComments = Prisma.PostGetPayload<{
         comments: true
     }
 }>
+

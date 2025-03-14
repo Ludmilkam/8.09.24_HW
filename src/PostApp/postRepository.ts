@@ -1,6 +1,7 @@
 import { client } from "../client/prismaClient";
 import { Prisma } from "@prisma/client";
 import { getErrorMessage } from "../tools/getErrorMessage";
+import { CreatePost } from "./types";
 
 async function getPostById(id: number) {
     try {
@@ -39,7 +40,7 @@ async function getAllPosts(max?: number) {
     }
 }
 
-async function createPost(data: Prisma.PostCreateInput) {
+async function createPost(data: CreatePost) {
     try {
         const posts = await client.post.create({
             data: data,

@@ -1,6 +1,7 @@
 import { client } from "../client/prismaClient";
 import { Prisma } from "@prisma/client";
 import { getErrorMessage } from "../tools/getErrorMessage";
+import { CreateComment } from "./types";
 
 async function getCommentById(id: number) {
     try {
@@ -32,7 +33,7 @@ async function getAllComments(max?: number) {
     }
 }
 
-async function createComment(data: Prisma.CommentCreateInput) {
+async function createComment(data: CreateComment) {
     try {
         const comments = await client.comment.create({
             data: data,

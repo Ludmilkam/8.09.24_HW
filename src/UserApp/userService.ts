@@ -1,6 +1,6 @@
 import { sign } from "jsonwebtoken"
 import { IError, IOkWithData } from "../types/types"
-import { CreateUser } from "./types"
+import { CreateUser, User } from "./types"
 import userRepository from "./userRepository"
 import { hash , compare } from "bcryptjs"
 import { SECRET_KEY } from "../config/token"
@@ -59,9 +59,22 @@ async function authRegistration(userData: CreateUser): Promise<IOkWithData<strin
 
 }
 
+async function getUserById (id : number):Promise <IOkWithData<User> | IError>{
+    const user = await userRepository.findUserById(id)
+    if (!user){
+        return { status: "error", message: "user not found" };
+    }
+    if (typeof user === "string") {
+        return { status: "error", message: user };
+    }
+    return {status : "ok" , data: user}
+}
+
+
 const userService = {
     authLogin: authLogin,
-    authRegistration: authRegistration
+    authRegistration: authRegistration,
+    getUserById: getUserById
 }
 
 export default userService
