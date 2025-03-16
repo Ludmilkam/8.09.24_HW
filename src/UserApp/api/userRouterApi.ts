@@ -9,3 +9,5 @@ const router: Router = Router()
 router.post("/login", userControllerApi.loginUser)
 router.post("/register", userControllerApi.registerUser)
 router.get("/me" , authTokenMiddleware , userControllerApi.getUser)
+
+export default router
