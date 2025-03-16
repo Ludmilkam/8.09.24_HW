@@ -28,6 +28,7 @@ async function getAllPosts(max?: number) {
         const posts = await client.post.findMany({
             include: {
                 tag: true,
+                comments: true
             },
         });
         return posts;

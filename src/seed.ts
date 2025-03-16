@@ -27,26 +27,26 @@ async function createPosts() {
                 author: "Author6",
                 tagId: 2,
             },
-            // {
-            //     name: "post7",
-            //     author: "Author7",
-            //     tagId: 2,
-            // },
-            // {
-            //     name: "post8",
-            //     author: "Author8",
-            //     tagId: 2,
-            // },
-            // {
-            //     name: "post9",
-            //     author: "Author9",
-            //     tagId: 2,
-            // },
-            // {
-            //     name: "post10",
-            //     author: "Author10",
-            //     tagId: 2,
-            // },
+            {
+                name: "post7",
+                author: "Author7",
+                tagId: 2,
+            },
+            {
+                name: "post8",
+                author: "Author8",
+                tagId: 2,
+            },
+            {
+                name: "post9",
+                author: "Author9",
+                tagId: 2,
+            },
+            {
+                name: "post10",
+                author: "Author10",
+                tagId: 2,
+            },
         ],
     });
 }
@@ -254,12 +254,12 @@ async function main() {
     await findPost();
     await findPosts();
     await updatePost();
-    // await createComment();
-    // await createComments();
-    // await findComment();
-    // await findComments();
+    await createComment();
+    await createComments();
+    await findComment();
+    await findComments();
     // await findCommentAndPost();
-    // await updateComment();
+    await updateComment();
     // await deletePost();
     // await deleteComment();
     await connectCommentsFromPosts();
