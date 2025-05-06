@@ -55,6 +55,7 @@ async function createUser(data: Prisma.UserCreateInput) {
         });
         return user;
     } catch (err) {
+        console.log(err)
         if (err instanceof Prisma.PrismaClientKnownRequestError) {
             const errorMessage = getErrorMessage(err.code);
             return errorMessage;

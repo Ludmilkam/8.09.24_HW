@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { verify, TokenExpiredError } from "jsonwebtoken";
 import { SECRET_KEY } from "../config/token";
 
-interface IToken {
+export interface IToken {
     id: number;
     username: string;
     email: string;

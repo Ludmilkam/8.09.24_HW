@@ -70,13 +70,11 @@ async function createPost(post: CreatePost): Promise<IOk | IError> {
     };
 }
 
-async function deletePost(post: CreatePost) {}
 
 const postService = {
     getPostById: getPostById,
     getAllPosts: getAllPosts,
     createPost: createPost,
-    deletePost: deletePost,
 };
 
 export default postService;

@@ -6,14 +6,11 @@ import { hash , compare } from "bcryptjs"
 import { SECRET_KEY } from "../config/token"
 
 
-async function authLogin(password:string, email: string): Promise<IOkWithData<string> | IError> {
+async function authLogin(email: string, password:string): Promise<IOkWithData<string> | IError> {
     const user = await userRepository.findUserByEmail(email)
 
     if (!user) {
         return {status:"error", message: "user not found"}
-    }
-    if ( typeof user != password) {
-        return {status:"error", message: "Passwords are not similar"}
     }
     
     if (typeof user === "string") {
@@ -27,7 +24,7 @@ async function authLogin(password:string, email: string): Promise<IOkWithData<st
  
         }
     
-    const token = sign(String(user.id), SECRET_KEY, { expiresIn: "1d" })
+    const token = sign({id: user.id}, SECRET_KEY, { expiresIn: "1d" })
     return {status : "ok" , data: token}
 }
 
@@ -45,6 +42,7 @@ async function authRegistration(userData: CreateUser): Promise<IOkWithData<strin
     }
 
     const newUser = await userRepository.createUser(hashedUserData);
+    console.log(newUser)
 
     if (typeof newUser === "string") {
         return { status: "error", message: "something wrong" };

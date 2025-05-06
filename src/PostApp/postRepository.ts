@@ -56,28 +56,11 @@ async function createPost(data: CreatePost) {
     }
 }
 
-async function deletePost(id: number) {
-    try {
-        const post = await client.post.delete({
-            where: {
-                id: id,
-            },
-        });
-        return post;
-    } catch (err) {
-        if (err instanceof Prisma.PrismaClientKnownRequestError) {
-            const errorMessage = getErrorMessage(err.code);
-            return errorMessage;
-        }
-        return "Unexpected error";
-    }
-}
 
 const postRepository = {
     getPostById,
     getAllPosts,
     createPost,
-    deletePost,
 };
 
 export default postRepository;

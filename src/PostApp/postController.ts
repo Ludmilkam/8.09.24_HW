@@ -33,18 +33,11 @@ async function createPost(req: Request, res: Response) {
     })
 }
 
-// не розумію нічого
-async function deletePost(req: Request, res: Response){
-    const post = req.body
-    const msg = postService.deletePost(post)
-    res.send(msg)
-}
 
 const postControllers = {
     getPostById: getPostById, 
     getAllPosts: getAllPosts,
     createPost: createPost,
-    deletePost: deletePost 
 }
 
 export default postControllers

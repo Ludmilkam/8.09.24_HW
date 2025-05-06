@@ -6,7 +6,6 @@ loginForm.addEventListener("submit", (event)=> {
             {
                 email: inputEmail.value,
                 password: inputPassword.value,
-                role: inputRole.value,
             }
         ),
         headers:{

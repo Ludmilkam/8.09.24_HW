@@ -1,3 +1,4 @@
+
 model User {
   id          Int       @id @default(autoincrement())
   username    String
@@ -5,7 +6,7 @@ model User {
   password    String
   description String?
   image       String?
-  role        String
+  role        String @default("user")
   posts       Post[]
   comments    Comment[]
 }
